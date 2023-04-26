@@ -14,11 +14,11 @@ help:
 	@echo "  apply                    configure remote Pulsar servers"
 
 check: install_roles
-	ansible-playbook -C -i inventory main.yml
+	ansible-playbook -C -i inventory main.yml 
 
 apply:
-	ansible-playbook -i inventory main.yml
-
+	ansible-playbook -i inventory main.yml 
+	
 get_job_metrics:
 	wget -O files/job_metrics_conf.xml ${REMOTE_JMC_FILE}
 

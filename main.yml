@@ -26,8 +26,18 @@
         path: "{{ pulsar_container_image_cache_path }}"
         state: directory
         mode: '0775'
+    
+    - name: Create config pulsar directory
+      become: true
+      become_user: root
+      file:
+        path: "{{ pulsar_root_path }}/config"
+        state: directory
+        mode: '0777'
 
     - name: Copy Pulsar application configuration file
+      become: true
+      become_user: pulsar
       template:
         src: "{{ inventory_hostname }}/app.yml.j2"
         dest: "{{ pulsar_root_path }}/config/app.yml"
@@ -36,13 +46,17 @@
       notify: restart pulsar
 
     - name: Apply patch to multiple files under basedir
+      become: true
+      become_user: root
       patch:
         src: "{{ item.src }}"
         basedir: "{{ item.basedir }}"
-        strip: 1
+        strip: 1 
         state: "{{ item.state }}"
         backup: "{{ item.backup }}"
       loop: "{{ patches_to_apply }}"
       when: apply_patches | bool
       notify: restart pulsar
       ignore_errors: yes
+
+

@@ -1,1 +1,3 @@
-.vault_password.text
+.vault-password.text
+ansible.cfg
+roles/

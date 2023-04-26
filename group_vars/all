@@ -4,13 +4,13 @@ pulsar_container_image_cache_path: "{{ pulsar_data_path }}/var/database/containe
 
 apply_patches: true
 patches_to_apply:
-  - { 'src': 'patches/uuid.patch', 'basedir': '/opt/pulsar/venv/lib/python2.7/site-packages', 'state': 'present', 'backup': 'yes' }
-  - { 'src': 'patches/params_submission.patch', 'basedir': '/opt/pulsar/venv/lib/python2.7/site-packages', 'state': 'present', 'backup': 'yes' }
-  - { 'src': 'patches/hostname.patch', 'basedir': '/opt/pulsar/venv/lib/python2.7/site-packages', 'state': 'present', 'backup': 'yes' }
+  - { 'src': 'patches/uuid.patch', 'basedir': '/opt/pulsar/venv3/lib/python3.9/site-packages', 'state': 'present', 'backup': 'yes' }
+  - { 'src': 'patches/params_submission.patch', 'basedir': '/opt/pulsar/venv3/lib/python3.9/site-packages', 'state': 'present', 'backup': 'yes' }
+  - { 'src': 'patches/hostname.patch', 'basedir': '/opt/pulsar/venv3/lib/python3.9/site-packages', 'state': 'absent', 'backup': 'yes' }
 
 copy_metrics_plugins: false
 metrics_plugins_to_copy:
-  - {'src': 'staging_time.py', 'dest': '/opt/pulsar/venv/lib/python2.7/site-packages/galaxy/jobs/metrics/instrumenters/staging_time.py'}
+  - {'src': 'staging_time.py', 'dest': '/opt/pulsar/venv3/lib/python3.9/site-packages/galaxy/jobs/metrics/instrumenters/staging_time.py'}
 
 #
 # Update hosts script parameters
@@ -19,5 +19,5 @@ metrics_plugins_to_copy:
 #
 name_prefix: "vgcn-"
 name_suffix: ".pulsar"
-private_network_prefix: "192.168.199"
+private_network_prefix: "192.168.100"
 workers_group_name: "workers"

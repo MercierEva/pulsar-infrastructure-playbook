@@ -1,8 +1,11 @@
 [pulsarservers]
-de01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
-de03.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
-it01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
-be01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos ansible_port=59444
-pt01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
+#de01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
+#de03.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
+#it01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
+#be01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos ansible_port=59444
+#pt01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
 # uk01.pulsar.galaxyproject.eu ansible_host=130.246.213.19 ansible_connection=ssh ansible_user=centos
 # fi01.pulsar.galaxyproject.eu ansible_host=195.148.31.179 ansible_connection=ssh ansible_user=centos
+fr01.pulsar.galaxyproject.eu ansible_connection=ssh ansible_user=centos
+[pulsarservers:vars]
+ansible_ssh_common_args='-F config.cfg'

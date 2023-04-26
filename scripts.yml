@@ -6,11 +6,16 @@
     mode: '0755'
 
 - name: Copy HTCondor script files
+  become: yes
+  become_user: pulsar
   synchronize:
     src: "scripts/"
     dest: "{{ pulsar_data_path }}/scripts"
+    rsync_opts: -e 'ssh -F config.cfg'
 
 - name: Change permissions of HTCondor script files
+  become: yes
+  become_user: pulsar
   file:
     path: "{{ pulsar_data_path }}/{{ item.name }}"
     mode: "{{ item.mode }}"
